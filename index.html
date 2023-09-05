@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filterable List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="center-align">My Contacts</h1>
+      <input type="text" id="filterInput" placeholder="Search names..." />
+      <ul class="collection with-header" id="names">
+        <li class="collection-header">
+          <h5>A</h5>
+        </li>
+        <li class="collection-item">
+          <a href="#">Abe</a>
+        </li>
+        <li class="collection-item">
+          <a href="#">Adam</a>
+        </li>
+        <li class="collection-item">
+          <a href="#">Akin</a>
+        </li>
+        <li class="collection-item">
+          <a href="#">Ade</a>
+        </li>
+        <li class="collection-header">
+          <h5>B</h5>
+        </li>
+        <li class="collection-item">
+          <a href="#">Bayo</a>
+        </li>
+        <li class="collection-item">
+          <a href="#">Badmus</a>
+        </li>
+        <li class="collection-item">
+          <a href="#">Bait</a>
+        </li>
+        <li class="collection-item">
+          <a href="#">Bowl</a>
+        </li>
+        <li class="collection-header">
+          <h5>C</h5>
+        </li>
+        <li class="collection-item">
+          <a href="#">Carry</a>
+        </li>
+        <li class="collection-item">
+          <a href="#">Cynthia</a>
+        </li>
+        <li class="collection-item">
+          <a href="#">Chinedu</a>
+        </li>
+        <li class="collection-item">
+          <a href="#">Cup</a>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      let filterInput = document.getElementById('filterInput')
+      filterInput.addEventListener('keyup', filterName)
+      function filterName(e){
+          e.preventDefault()
+          let filterValue = document.getElementById('filterInput').value.toUpperCase();
+        //   console.log(filterValue)
+        let ul = document.getElementById('names')
+        const li = ul.querySelectorAll('li.collection-item');
+        // loop through collection item li
+        for(let i = 0; i < li.length; i++){
+            const a =li[i].getElementsByTagName('a')[0];
+            // if matches 
+            if(a.innerHTML.toUpperCase().indexOf(filterValue) > -1){
+                li[i].style.display = 'block';
+            } else{
+                li[i].style.display = 'none';
+            }
+        }
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
